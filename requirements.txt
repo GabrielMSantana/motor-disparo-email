@@ -1,0 +1,4 @@
+python-dotenv==1.2.2
+requests==2.33.1
+sendgrid==6.12.5
+pyodbc==5.3.0
