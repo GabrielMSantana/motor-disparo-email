@@ -1,0 +1,27 @@
+name: Testes
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependências
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y unixodbc-dev
+          pip install -r requirements-dev.txt
+
+      - name: Rodar testes
+        run: pytest
+
+      - name: Rodar demo
+        run: python main.py demo --qtd 2000
